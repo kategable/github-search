@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GithubService } from './github.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'github-search';
+  term = 'kate'
+  items: any;
+  isMore = this.service.isMore;
+  cnt = this.service.cnt;
+  page = this.service.page;
+  numberofPages = this.cnt / this.page
+  /**
+   *
+   */
+  constructor(private readonly service: GithubService) {
+
+  }
+  async search(){
+    let data = await this.service.getUsers(this.term);
+    this.items = data.items;
+    this.cnt = this.service.cnt;
+    this.page = this.service.page;
+    this.numberofPages = Math.ceil( this.cnt / 100);
+    this.isMore = this.service.isMore;
+
+  }
 }
