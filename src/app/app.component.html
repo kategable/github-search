@@ -1,11 +1,15 @@
-<input type="text" [(ngModel)]="term">
-<button type="button" (click)="search()"> {{isMore? 'next 100' : 'search'}}</button>
+<div class= "container mx-auto p-2">
+  <input class="p-1 border" type="text" [(ngModel)]="term">
+  <button class="btn"  type="button" (click)="search()"> {{isMore? 'next 100' : 'search'}}</button>
+  <h3>
+    total:{{this.cnt}}
+    page: {{this.page}} of {{numberofPages}}
+  </h3>
 
-total:{{this.cnt}}
-page: {{this.page}} of {{numberofPages}}
-<ol>
-  <li *ngFor="let item of items">
-   <img [src]="item.avatar_url" style="width:100px; height:100px">
-   <a target="_blank" [href]="item.html_url">{{item.login}}</a>
-  </li>
-</ol>
+  <ol class="grid grid-flow-row grid-cols-5 grid-rows-5 gap-2">
+    <li *ngFor="let item of items">
+     <img [src]="item.avatar_url" style="width:90%; height:90%">
+     <a target="_blank" [href]="item.html_url">{{item.login}}</a>
+    </li>
+  </ol>
+</div>
