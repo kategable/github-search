@@ -6,10 +6,5 @@
     page: {{this.page}} of {{numberofPages}}
   </h3>
 
-  <ol class="grid grid-flow-row grid-cols-5 grid-rows-5 gap-2">
-    <li *ngFor="let item of items">
-    <h2>{{item.login}}</h2>
-     <a target="_blank" [href]="item.html_url">   <img [src]="item.avatar_url" style="width:90%; height:90%"></a>
-    </li>
-  </ol>
+  <app-detail [items]="items"></app-detail>
 </div>
