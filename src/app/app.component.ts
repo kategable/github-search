@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { GithubService } from './github.service';
 
 @Component({
@@ -6,19 +7,25 @@ import { GithubService } from './github.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent  {
   term = 'kate'
   items: any;
 
 
   gridData$ = this.service.gridData$;
-  /**
-   *
-   */
+  data: any;
+
   constructor(private readonly service: GithubService) {
 
   }
+
   async search(){
     await this.service.getUsers(this.term);
+  }
+  search2(){
+    const sub = this.service.searchUsers(this.term).subscribe((data: any)=>{
+      this.data = data.items;
+      sub.unsubscribe();
+    })
   }
 }
