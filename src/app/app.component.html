@@ -1,10 +1,10 @@
 <div class= "container mx-auto p-2" *ngIf="gridData$ | async as grid" >
   <input class="p-1 border" type="text" [(ngModel)]="term">
   <button class="btn"  type="button" (click)="search2()"> {{grid.hasMoreRecords ? 'next 100' : 'search'}}</button>
-  <button class="btn bg-red-100"  type="button" (click)="search2()"> {{grid.hasMoreRecords ? 'next 100' : 'search'}}</button>
-  <h3>
-    total:{{grid.totalCnt}}
-    page: {{grid.currentPage}} of {{grid.numberofPages}}
+  <button class="btn2"  type="button" (click)="search2()"> {{grid.hasMoreRecords ? 'next 100' : 'search'}}</button>
+  <h3 class="p-3">
+    <div>total: {{grid.totalCnt}}</div>
+    <div>page: {{grid.currentPage}} of {{grid.numberofPages}}</div>
   </h3>
 
   <app-list [items]="searchData$ | async"></app-list>
