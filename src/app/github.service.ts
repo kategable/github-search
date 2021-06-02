@@ -6,7 +6,7 @@ import { BehaviorSubject, throwError } from 'rxjs';
 export interface IGrid {
   data: any[];
   currentPage: number;
-  totalCnt: number;
+  totalCount: number;
   hasMoreRecords: boolean;
   numberofPages: number;
 }
@@ -20,12 +20,12 @@ export class GithubService {
   private initValue: IGrid = {
     data: [],
     currentPage: 0,
-    totalCnt: 0,
+    totalCount: 0,
     hasMoreRecords: false,
     numberofPages: 0,
   };
   private readonly gridSubject = new BehaviorSubject<IGrid>(this.initValue);
-  gridData$ = this.gridSubject.asObservable();
+  grid$ = this.gridSubject.asObservable();
   url= "https://api.github.com/search/users"
 
   constructor(private readonly http: HttpClient) {}
@@ -55,7 +55,7 @@ export class GithubService {
       let obj: IGrid = {
         data: response.data.items,
         currentPage: this.page,
-        totalCnt: response.data.total_count,
+        totalCount: response.data.total_count,
         hasMoreRecords: isMore,
         numberofPages: numberofPages,
       };

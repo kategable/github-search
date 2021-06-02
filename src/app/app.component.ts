@@ -12,7 +12,7 @@ export class AppComponent  {
   items: any;
 
 
-  gridData$ = this.service.gridData$;
+  gridData$ = this.service.grid$;
   data: any;
 
   constructor(private readonly service: GithubService) {
