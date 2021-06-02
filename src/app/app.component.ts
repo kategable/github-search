@@ -8,17 +8,18 @@ import { GithubService } from './github.service';
 })
 export class AppComponent {
   term = 'kate'
-  items: any;
-
 
   gridData$ = this.service.gridData$;
-  /**
-   *
-   */
+  searchData$ = this.service.searchData$;
+ 
   constructor(private readonly service: GithubService) {
 
   }
   async search(){
     await this.service.getUsers(this.term);
+
+  }
+  search2(){
+    this.service.search(this.term);
   }
 }

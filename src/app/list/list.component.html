@@ -1,0 +1,6 @@
+<ol class="grid grid-flow-row grid-cols-5 grid-rows-5 gap-2">
+  <li *ngFor="let item of items; index as i; trackBy: trackByFn">
+    <app-detail [item]="item"></app-detail>
+  </li>
+</ol>
+
