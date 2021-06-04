@@ -14,7 +14,7 @@ export class AppComponent  {
 
   gridData$ = this.service.grid$;
   data: any;
-
+  testTitle = "My Title"
   constructor(private readonly service: GithubService) {
 
   }
